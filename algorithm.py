@@ -4,7 +4,7 @@ sys.stdin = open("input.txt", "r")
 nrf = [1,-1,0,0]
 ncf = [0,1,1,-1]
 cnt = 0
-
+hihihihihi
 def dfs(r, c, danji_cnt):
     print('-------------------')
     for i in range(N):
