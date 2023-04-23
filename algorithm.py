@@ -2,7 +2,7 @@
 import sys
 sys.stdin = open("input.txt", "r")
 nrf = [1,-1,0,0]
-ncf = [0,0,1,-1]
+ncf = [1,0,1,-1]
 cnt = 0
 
 def dfs(r, c, danji_cnt):
