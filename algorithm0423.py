@@ -2,9 +2,8 @@
 import sys
 sys.stdin = open("input.txt", "r")
 nrf = [1,-1,0,0]
-ncf = [0,1,1,-1]
+ncf = [0,0,1,-1]
 cnt = 0
-hihihihihi
 def dfs(r, c, danji_cnt):
     print('-------------------')
     for i in range(N):
@@ -48,4 +47,5 @@ if __name__ == '__main__':
     for i in range(N):
         print(visited[i])
     print('-------------------')
+    print(len(house))
     print(house)
