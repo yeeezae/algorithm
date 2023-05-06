@@ -1,43 +1,32 @@
-# 재귀 limit 설정
+#!/usr/bin/env python3
 import sys
-sys.setrecursionlimit(10000)
+sys.stdin =open('input.txt','r')
+MIN_CNT = sys.maxsize
 
-### 2
-# dfs 정의
-def dfs(x, y):
-    # 상하좌우 확인을 위해 dx, dy 생성
-    dx = [0,0,-1,1]
-    dy = [1,-1,0,0]
-
-    # 네 방향 탐색
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
-        if (0 <= nx < M) and (0 <= ny < N):  # nx:ny ↔ M:N 범위 참고
-            if graph[ny][nx] == 1:
-                graph[ny][nx] = -1  # 배추가 인접할 때 체커
-                dfs(nx, ny)
-
-### 1                    
-T = int(input())
-
-for i in range(T):
-    M, N, K = map(int, input().split())  # M:가로, N:세로, K:개수
-    graph = [[0]*M for i in range(N)]
-    cnt = 0
-
-    # 배추 위치에 1 표시
-    for j in range(K):
-        X, Y = map(int, input().split())
-        graph[Y][X] = 1
-
-### 3        
-    # dfs 활용해서 배추 그룹 수 세기
-    for x in range(M):
-        for y in range(N):
-            if graph[y][x] == 1:
-                dfs(x, y)
-                cnt += 1
-
-    # 정답을 위한 출력
-    print(cnt)
+def dfs(start, now, value, cnt):
+    if cnt == N:
+        if maps[now][start]:
+            value =+ maps[now][start]
+            if MIN_CNT > value:
+                MIN_CNT = value
+                return
+        if value > MIN_CNT:
+            return    
+    for i in range(N):
+        if visited[i] == 0 and maps[now][i]:
+            visited[i] = 1
+            dfs(start, i, value+maps[now][i], cnt+1)
+            visited[i] =0
+if __name__ == "__main__":
+    N = int(input())
+    maps=list()
+    for i in range(N):
+        maps.append(list(map(int, input().strip().split())))
+    visited = [0 for i in range(N)]
+    
+    for i in range(N):
+        if visited[i] == 0:
+            visited[i] =1
+            dfs(i,i,0,1)
+            visited[i] =0
+        print(MIN_CNT)
