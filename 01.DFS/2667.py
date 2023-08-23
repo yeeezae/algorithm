@@ -1,3 +1,4 @@
+#2667. 단지번호 붙이기
 #!/usr/bin/env python3
 import sys
 sys.stdin = open("input.txt", "r")
@@ -15,7 +16,7 @@ def dfs(r, c, danji_cnt):
         if (0 <= nr < N) and (0 <= nc < N) and (maps[nr][nc] == 1) and (visited[nr][nc] == 0):
             visited[nr][nc] = cnt
             danji_cnt=dfs(nr,nc,danji_cnt+1)
-    return danji_cnt #다시 돌아가야할때 그곳에 cnt를 다시 갱신해줘야 함
+    return danji_cnt
 
 if __name__ == '__main__':
     N = int(input())

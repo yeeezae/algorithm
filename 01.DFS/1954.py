@@ -1,15 +1,11 @@
+#1954. 달팽이 숫자
 #!/usr/bin/env python3
 import sys
-
 nrf = [0,1,0,-1]
 ncf = [1,0,-1,0]
 maps = list()
 visited = list()
 def dfs(r, c, d, v):
-    print("-------")
-    for i in range(len(visited)):
-        print(visited[i])
-    print("-------")
     cnt = 0
     for i in range(4):
         nr = r + nrf[i]
@@ -35,13 +31,22 @@ def dfs(r, c, d, v):
             dfs(nr,nc,d, v+1)
     
 
+
 if __name__ == '__main__':
-    N = int(input())
-    for i in range(N):
-        maps.append([])
-        visited.append([])
-        for j in range(N):
-            maps[i].append(0)
-            visited[i].append(0)
-    visited[0][0]=1
-    dfs(0,0,0,2) # 0 -->
+    T = int(input())
+    for test_case in range(1, T + 1):
+        N = int(input())
+        visited.clear() #dfs 들어가기전 이전 값이 들어있는 것들을 0으로 초기화 시켜줘야함
+        for i in range(N):
+            maps.append([])
+            visited.append([])
+            for j in range(N):
+                maps[i].append(0)
+                visited[i].append(0)
+        visited[0][0]=1
+        dfs(0,0,0,2) # 0 -->
+        print('#%d' % test_case)
+        for i in range(N):
+            for j in range(N):
+                print(visited[i][j],end=" ")
+            print()

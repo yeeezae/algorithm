@@ -1,3 +1,4 @@
+#1012. 유기농 배추
 #!/usr/bin/env python3
 import sys
 sys.stdin = open("input.txt", "r")
@@ -40,5 +41,3 @@ if __name__ == "__main__":
                     cnt +=1
                     dfs(i,j)
         print(cnt)
-
-
